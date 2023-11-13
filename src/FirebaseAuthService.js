@@ -3,7 +3,7 @@ import firebase from "./FirebaseConfig";
 const auth = firebase.auth();
 
 const registerUser = (email, password) => {
-    return auth.createUSerWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password);
 };
 
 const loginUser = (email, password) => {

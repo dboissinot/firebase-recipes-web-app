@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <div className="title-row">
         <h1 className="title">Firebase Recipes Toto</h1>
-        <LoginForm existingUSer={user}></LoginForm>
+        <LoginForm existingUser={user}></LoginForm>
       </div>
     </div>
   );
