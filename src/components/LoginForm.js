@@ -21,6 +21,20 @@ function LoginForm({ existingUser}){
         FirebaseAuthService.logoutUser();
     }
 
+    async function handleSendResetPasswordEmail(){
+        if(!username){
+            alert('missing username!');
+            return;
+
+        }
+        try {
+            await FirebaseAuthService.sendPasswordResetEmail(username);
+            alert("sent the password reset email");
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
     return <div className="login-form-container">
         {
             existingUser?(<div classNAme="row">
@@ -53,6 +67,9 @@ function LoginForm({ existingUser}){
                 </label>
                 <div className="button-box">
                     <button className="primary-button">Login</button>
+                    <button type="button" onClick={handleSendResetPasswordEmail} className="primary-button">
+                        Reset Password
+                    </button>
                 </div>
 
             </form>
