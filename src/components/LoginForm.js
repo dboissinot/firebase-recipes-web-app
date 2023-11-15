@@ -17,6 +17,18 @@ function LoginForm({ existingUser}){
         }
     }
 
+    async function handleRegister(event){
+        event.preventDefault();
+
+        try {
+            await FirebaseAuthService.registerUser(username, password);
+            setUsername("");
+            setPassword("");
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
     function handleLogout(){
         FirebaseAuthService.logoutUser();
     }
@@ -66,6 +78,7 @@ function LoginForm({ existingUser}){
                         />
                 </label>
                 <div className="button-box">
+                    <button type="button" onClick={handleRegister} className="primary-button">Register</button>
                     <button className="primary-button">Login</button>
                     <button type="button" onClick={handleSendResetPasswordEmail} className="primary-button">
                         Reset Password
